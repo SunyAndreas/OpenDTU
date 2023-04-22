@@ -1,23 +1,17 @@
-export interface ValueObject {
-    v: number; // value
-    u: string; // unit
-    d: number; // digits
-}
-
 export interface InverterStatistics {
-    name: ValueObject,
-    Power?: ValueObject;
-    Voltage?: ValueObject;
-    Current?: ValueObject;
-    "Power DC"?: ValueObject;
-    YieldDay?: ValueObject;
-    YieldTotal?: ValueObject;
-    Frequency?: ValueObject;
-    Temperature?: ValueObject;
-    PowerFactor?: ValueObject;
-    ReactivePower?: ValueObject;
-    Efficiency?: ValueObject;
-    Irradiation?: ValueObject;
+    name?: string,
+    Power?: number;
+    Voltage?: number;
+    Current?: number;
+    "Power DC"?: number;
+    YieldDay?: number;
+    YieldTotal?: number;
+    Frequency?: number;
+    Temperature?: number;
+    PowerFactor?: number;
+    ReactivePower?: number;
+    Efficiency?: number;
+    Irradiation?: number;
 }
 
 export interface Inverter {
@@ -36,9 +30,9 @@ export interface Inverter {
 }
 
 export interface Total {
-    Power: ValueObject;
-    YieldDay: ValueObject;
-    YieldTotal: ValueObject;
+    Power: number;
+    YieldDay: number;
+    YieldTotal: number;
 }
 
 export interface Hints {

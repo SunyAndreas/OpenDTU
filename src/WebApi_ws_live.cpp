@@ -123,7 +123,7 @@ void WebApiWsLiveClass::generateJsonResponse(JsonVariant& root)
                 if (t == TYPE_DC) {
                     INVERTER_CONFIG_T* inv_cfg = Configuration.getInverterConfig(inv->serial());
                     if (inv_cfg != nullptr) {
-                        chanTypeObj[String(static_cast<uint8_t>(c))]["name"]["u"] = inv_cfg->channel[c].Name;
+                        chanTypeObj[String(static_cast<uint8_t>(c))]["name"] = inv_cfg->channel[c].Name;
                     }
                 }
                 addField(chanTypeObj, i, inv, t, c, FLD_PAC);
@@ -171,7 +171,7 @@ void WebApiWsLiveClass::generateJsonResponse(JsonVariant& root)
     addTotalField(totalObj, "Power", totalPower, "W", 1);
     addTotalField(totalObj, "YieldDay", totalYieldDay, "Wh", 0);
     addTotalField(totalObj, "YieldTotal", totalYieldTotal, "kWh", 2);
-
+ 
     JsonObject hintObj = root.createNestedObject("hints");
     struct tm timeinfo;
     hintObj["time_sync"] = !getLocalTime(&timeinfo, 5);
@@ -196,17 +196,13 @@ void WebApiWsLiveClass::addField(JsonObject& root, uint8_t idx, std::shared_ptr<
         }
         String chanNum;
         chanNum = channel;
-        root[chanNum][chanName]["v"] = inv->Statistics()->getChannelFieldValue(type, channel, fieldId);
-        root[chanNum][chanName]["u"] = inv->Statistics()->getChannelFieldUnit(type, channel, fieldId);
-        root[chanNum][chanName]["d"] = inv->Statistics()->getChannelFieldDigits(type, channel, fieldId);
+        root[chanNum][chanName] = inv->Statistics()->getChannelFieldValue(type, channel, fieldId);
     }
 }
 
 void WebApiWsLiveClass::addTotalField(JsonObject& root, String name, float value, String unit, uint8_t digits)
 {
-    root[name]["v"] = value;
-    root[name]["u"] = unit;
-    root[name]["d"] = digits;
+    root[name] = value;
 }
 
 void WebApiWsLiveClass::onWebsocketEvent(AsyncWebSocket* server, AsyncWebSocketClient* client, AwsEventType type, void* arg, uint8_t* data, size_t len)
