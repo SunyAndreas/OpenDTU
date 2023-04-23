@@ -8,7 +8,7 @@
                         {{ $n(totalData.YieldTotal, 'decimal', {
                                 maximumFractionDigits: 1
                             })}}
-                        <small class="text-muted">kWh</small>
+                        <small class="text-muted">{{ $t('inverterchannelunits.YieldTotal') }}</small>
                     </h2>
                 </div>
             </div>
@@ -22,7 +22,7 @@
 
                                 maximumFractionDigits: 0
                             })}}
-                        <small class="text-muted">Wh</small>
+                        <small class="text-muted">{{ $t('inverterchannelunits.YieldDay')}}</small>
                     </h2>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                         {{ $n(totalData.Power, 'decimal', {
                                 maximumFractionDigits: 1
                             })}}
-                        <small class="text-muted">W</small>
+                        <small class="text-muted">{{ $t('inverterchannelunits.Power')}}</small>
                     </h2>
                 </div>
             </div>
