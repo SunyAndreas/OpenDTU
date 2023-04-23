@@ -46,9 +46,20 @@
                                         }} W | </template>{{ $n(inverter.limit_relative / 100, 'percent') }}
                                     </div>
                                     <div style="padding-right: 2em;">
+                                        {{ $t('inverterchannelproperty.Temperature') }}: 
+                                        <template v-if="inverter.INV[0].Temperature && typeof inverter.INV[0].Temperature == 'number'">
+                                            {{ $n(inverter.INV[0].Temperature, 'decimal') }}
+                                        </template>
+                                    </div>
+                                    <div style="padding-right: 2em;">
+                                        <template v-if="inverter.data_age < 300">
                                         {{ $t('home.DataAge') }} {{ $t('home.Seconds', {'val': $n(inverter.data_age) }) }}
-                                        <template v-if="inverter.data_age > 300">
-                                            / {{ calculateAbsoluteTime(inverter.data_age) }}
+                                    </template>
+                                    <template v-else-if="inverter.data_age < 3000">
+                                        {{ $t('home.DataAge') }} {{ $t('home.Minutes', {'val': $n(inverter.data_age/60) }) }}
+                                    </template>
+                                        <template v-else>
+                                            {{ $t('home.DataAge') }} {{ calculateAbsoluteTime(inverter.data_age) }}
                                         </template>
                                     </div>
                                 </div>
@@ -94,7 +105,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row flex-row-reverse flex-wrap-reverse g-3">
-                                <template v-for="chanType in [{obj: inverter.INV, name: 'INV'}, {obj: inverter.AC, name: 'AC'}, {obj: inverter.DC, name: 'DC'}].reverse()">
+                                <template v-for="chanType in [ {obj: inverter.AC, name: 'AC'}, {obj: inverter.DC, name: 'DC'}].reverse()">
                                     <template v-for="channel in Object.keys(chanType.obj).sort().reverse().map(x=>+x)" :key="channel">
                                         <template v-if="(chanType.name != 'DC') ||
                                             (chanType.name == 'DC' && getSumIrridiation(inverter) == 0) ||

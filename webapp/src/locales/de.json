@@ -99,6 +99,7 @@
         "CurrentLimit": "Aktuelles Limit: ",
         "DataAge": "Letzte Aktualisierung: ",
         "Seconds": "vor {val} Sekunden",
+        "Minutes": "vor {val} Minuten",
         "ShowSetInverterLimit": "Zeige / Setze Wechselrichterlimit",
         "TurnOnOff": "Schalte Wechselrichter ein oder aus",
         "ShowInverterInfo": "Zeige Wechselrichter-Informationen",

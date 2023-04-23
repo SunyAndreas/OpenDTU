@@ -99,6 +99,7 @@
         "CurrentLimit": "Limite de courant : ",
         "DataAge": "Âge des données : ",
         "Seconds": "{val} secondes",
+        "Minutes": "{val} minutes",
         "ShowSetInverterLimit": "Afficher / Régler la limite de l'onduleur",
         "TurnOnOff": "Allumer / Eteindre l'onduleur",
         "ShowInverterInfo": "Afficher les informations sur l'onduleur",
