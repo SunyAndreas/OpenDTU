@@ -56,7 +56,9 @@
                                         {{ $t('home.DataAge') }} {{ $t('home.Seconds', {'val': $n(inverter.data_age) }) }}
                                     </template>
                                     <template v-else-if="inverter.data_age < 3000">
-                                        {{ $t('home.DataAge') }} {{ $t('home.Minutes', {'val': $n(inverter.data_age/60) }) }}
+                                        {{ $t('home.DataAge') }} {{ $t('home.Minutes', {'val': $n(inverter.data_age/60, 'decimal', {
+                                             maximumFractionDigits: 0
+                                          }) }) }}
                                     </template>
                                         <template v-else>
                                             {{ $t('home.DataAge') }} {{ calculateAbsoluteTime(inverter.data_age) }}
