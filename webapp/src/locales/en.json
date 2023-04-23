@@ -307,6 +307,20 @@
         "Efficiency": "Efficiency",
         "Irradiation": "Irradiation"
     },
+    "inverterchannelunits": {
+        "Power": "W",
+        "Voltage": "V",
+        "Current": "A",
+        "Power DC": "W",
+        "YieldDay": "Wh",
+        "YieldTotal": "kWh",
+        "Frequency": "Hz",
+        "Temperature": "°C",
+        "PowerFactor": "",
+        "ReactivePower": "var",
+        "Efficiency": "%",
+        "Irradiation": "%"
+    },
     "maintenancereboot": {
         "DeviceReboot": "Device Reboot",
         "PerformReboot": "Perform Reboot",
