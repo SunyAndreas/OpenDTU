@@ -5,11 +5,10 @@
                 <div class="card-header text-bg-success">{{ $t('invertertotalinfo.TotalYieldTotal') }}</div>
                 <div class="card-body card-text text-center">
                     <h2>
-                        {{ $n(totalData.YieldTotal.v, 'decimal', {
-                                minimumFractionDigits: totalData.YieldTotal.d,
-                                maximumFractionDigits: totalData.YieldTotal.d
+                        {{ $n(totalData.YieldTotal, 'decimal', {
+                                maximumFractionDigits: 1
                             })}}
-                        <small class="text-muted">{{ totalData.YieldTotal.u }}</small>
+                        <small class="text-muted">kWh</small>
                     </h2>
                 </div>
             </div>
@@ -19,11 +18,11 @@
                 <div class="card-header text-bg-success">{{ $t('invertertotalinfo.TotalYieldDay') }}</div>
                 <div class="card-body card-text text-center">
                     <h2>
-                        {{ $n(totalData.YieldDay.v, 'decimal', {
-                                minimumFractionDigits: totalData.YieldDay.d,
-                                maximumFractionDigits: totalData.YieldDay.d
+                        {{ $n(totalData.YieldDay, 'decimal', {
+
+                                maximumFractionDigits: 0
                             })}}
-                        <small class="text-muted">{{ totalData.YieldDay.u }}</small>
+                        <small class="text-muted">Wh</small>
                     </h2>
                 </div>
             </div>
@@ -33,11 +32,10 @@
                 <div class="card-header text-bg-success">{{ $t('invertertotalinfo.TotalPower') }}</div>
                 <div class="card-body card-text text-center">
                     <h2>
-                        {{ $n(totalData.Power.v, 'decimal', {
-                                minimumFractionDigits: totalData.Power.d,
-                                maximumFractionDigits: totalData.Power.d
+                        {{ $n(totalData.Power, 'decimal', {
+                                maximumFractionDigits: 1
                             })}}
-                        <small class="text-muted">{{ totalData.Power.u }}</small>
+                        <small class="text-muted">W</small>
                     </h2>
                 </div>
             </div>

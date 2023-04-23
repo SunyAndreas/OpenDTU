@@ -8,7 +8,7 @@
         </div>
 
         <div v-if="channelType == 'DC'" class="card-header">
-            <template v-if="channelData.name.u != ''">{{ channelData.name.u }}</template>
+            <template v-if="channelData.name != ''">{{ channelData.name }}</template>
             <template v-else>{{ $t('inverterchannelinfo.String', { num: channelNumber + 1 }) }}</template>
         </div>
 
@@ -19,24 +19,16 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">{{ $t('inverterchannelinfo.Property') }}</th>
-                            <th style="text-align: right" scope="col">{{ $t('inverterchannelinfo.Value') }}</th>
-                            <th scope="col">{{ $t('inverterchannelinfo.Unit') }}</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr v-for="(property, key) in channelData" :key="`prop-${key}`">
-                            <template v-if="key != 'name' && property">
+                            <template v-if="property && typeof property == 'number'">
                                 <th scope="row">{{ $t('inverterchannelproperty.' + key) }}</th>
                                 <td style="text-align: right">
-                                    {{ $n(property.v, 'decimal', {
-                                        minimumFractionDigits: property.d,
-                                        maximumFractionDigits: property.d})
-                                    }}
+                                     {{ $n(property, 'decimal', {
+                                maximumFractionDigits: 1
+                            })}}
                                 </td>
-                                <td>{{ property.u }}</td>
+                                <td>{{ $t('inverterchannelunits.' + key) }}</td>
                             </template>
                         </tr>
                     </tbody>
@@ -56,5 +48,10 @@ export default defineComponent({
         channelType: { type: String, required: true },
         channelNumber: { type: Number, required: true },
     },
+    computed: {
+        numericValue: function () {
+
+        }
+    }
 });
 </script>
